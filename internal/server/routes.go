@@ -83,6 +83,7 @@ func (s *Server) GetChapterMP3(w http.ResponseWriter, r *http.Request) {
 	resp["audio"] = encodeAudio
 	resp["text"] = encodeText
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	b, err := json.Marshal(resp)
 	if err != nil {
 		http.Error(w, err.Error(), 422)
